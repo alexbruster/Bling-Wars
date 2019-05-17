@@ -101,26 +101,30 @@ class HomePage extends Component {
       default:
         return (
           <div>
-            {isButton ? <div className = 'first-screen-button'>
-                        <button className = 'button'
-                                onClick={() => this.randomPlayers()}>
-                          Choose a random player and ship
-                        </button> 
-                        </div> :
+            {isButton ? <section id = 'first-screen-button'>
+                          <button className = 'button'
+                                  onClick={() => this.randomPlayers()}>
+                            Choose a random player and ship
+                          </button> 
+                        </section> :
 
-                        <div className = "first-screen">
-                        <h2>Player One:</h2>
-                        <p>{playerOne}</p>
-                        <br/>
-                        <img className = "ship-image" src={shipImage} alt="shipImage" />
-                        <p>{vehiclePlayerOne}</p>
-                  
-                        <h2>Player Two:</h2>
-                        <p>{playerTwo}</p>
-                        <br/>
-                        <img className = "ship-image" src={shipImage} alt="shipImage" />
-                        <div>{vehiclePlayerTwo}</div>
-                        </div>
+                        <section id = "game-screen">
+                          <div className = 'player-one'>
+                            <h2>Player One:</h2>
+                            <p>{playerOne}</p>
+                            <br/>
+                            <img className = "ship-image" src={shipImage} alt="shipImage" />
+                            <p>{vehiclePlayerOne}</p>
+                          </div>
+                      
+                          <div className = 'player-two'>
+                            <h2>Player Two:</h2>
+                            <p>{playerTwo}</p>
+                            <br/>
+                            <img className = "ship-image" src={shipImage} alt="shipImage" />
+                            <div>{vehiclePlayerTwo}</div>
+                          </div>
+                        </section>
                         }
           </div>
         )
