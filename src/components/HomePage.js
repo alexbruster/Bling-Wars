@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import GameTarget from './GameTarget';
+import Footer from './Footer';
+
 import shipImage from '../images/space.png';
 import loadingImage from '../images/hourglass.png';
 
@@ -33,21 +36,21 @@ class HomePage extends Component {
     //elegimos el player y lo quitamos del array para ponerlo al final de éste
     //este nuevo array será el que recorra el player two
     let num = Math.floor(Math.random() * people.length);
-    let playerOne = people.map(player => player.name)[num];
+    let playerOne = people.map(player => player)[num];
 
     let player = people.splice(num, 1);
     people.push(player[0]);
 
     //lo mismo para los vehículos
     let index = Math.floor(Math.random() * vehicles.length);
-    let vehiclePlayerOne = vehicles.map(ship => ship.name)[index];
+    let vehiclePlayerOne = vehicles.map(ship => ship)[index];
 
     let vehicle = vehicles.splice(index, 1);
     vehicles.push(vehicle[0]);
 
     this.setState({
           playerOne,
-          vehiclePlayerOne,
+          vehiclePlayerOne: vehiclePlayerOne
         })
   }
   
@@ -59,9 +62,9 @@ class HomePage extends Component {
 
     //recorremos los arrays hasta la penúltima posición, para evitar que el player y 
     //el vehículo sean iguales a los del contrincante
-    let playerTwo = people.map(player => player.name)[Math.floor(Math.random() * (people.length-1))];
+    let playerTwo = people.map(player => player)[Math.floor(Math.random() * (people.length-1))];
 
-    let vehiclePlayerTwo = vehicles.map(ship => ship.name)[Math.floor(Math.random() * (vehicles.length-1))];
+    let vehiclePlayerTwo = vehicles.map(ship => ship)[Math.floor(Math.random() * (vehicles.length-1))];
 
     this.setState({
       playerTwo,
@@ -94,7 +97,7 @@ class HomePage extends Component {
       case 'loading':
         return (<div className= 'loading-screen'>
                   <img className='loading-image' src={loadingImage} alt='loadingImage' />
-                  <p>Loading...</p>
+                  <h4>Loading...</h4>
                 </div>
                 )
 
@@ -102,28 +105,37 @@ class HomePage extends Component {
         return (
           <div>
             {isButton ? <section id = 'first-screen-button'>
+                          <h4>BLING WARS</h4>
                           <button className = 'button'
                                   onClick={() => this.randomPlayers()}>
-                            Choose a random player and ship
+                            LET'S START
                           </button> 
                         </section> :
 
                         <section id = "game-screen">
+
                           <div className = 'player-one'>
                             <h2>Player One:</h2>
-                            <p>{playerOne}</p>
+                            <h4>{playerOne.name}</h4>
                             <br/>
                             <img className = "ship-image" src={shipImage} alt="shipImage" />
-                            <p>{vehiclePlayerOne}</p>
+                            <h4>{vehiclePlayerOne.name}</h4>
                           </div>
+
+                          <GameTarget />
                       
                           <div className = 'player-two'>
                             <h2>Player Two:</h2>
-                            <p>{playerTwo}</p>
+                            <h4>{playerTwo.name}</h4>
                             <br/>
                             <img className = "ship-image" src={shipImage} alt="shipImage" />
-                            <div>{vehiclePlayerTwo}</div>
+                            <h4>{vehiclePlayerTwo.name}</h4>
                           </div>
+
+                          <Footer vehiclePlayerOne={vehiclePlayerOne}
+                                  vehiclePlayerTwo={vehiclePlayerTwo}
+                                  />
+
                         </section>
                         }
           </div>
