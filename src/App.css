@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Bungee+Outline&display=swap');
+
 /* ---- reset ---- */
 
 html {
@@ -16,6 +18,10 @@ body {
 }
 
 h2 {
+  margin-top: 0%;
+}
+
+h3 {
   margin-top: 0%;
 }
 
@@ -42,71 +48,72 @@ p {
   align-items: center;
 }
 
+.home-page-title {
+  font-size: 3em;
+  font-family: 'Bungee Outline', cursive;
+  color: rgb(227, 230, 202);
+}
+
 #game-screen {
   height: 100vh;;
   display: grid;
-  grid-template-columns: 33% 33% 33%;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
-  grid-template-areas: 
+  grid-template-areas:
+    "header header header" 
     "left center right"
-    " . footer footer"
+    "  .  footer footer"
 }
 
 .player-one {
   grid-area: left;
   justify-self: center;
+  align-self: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20%;
 }
 
 .player-two {
   grid-area: right;
   justify-self: center;
+  align-self: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20%;
 }
 
 .game-target {
   grid-area: center;
   justify-self: center;
+  align-self: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20%;
+  margin-top: 30px;
 }
 
 .footer {
   grid-area: footer;
+  display: flex;
+  justify-content: space-around;
 }
 
-/* #site-header {
-  padding: 30px 0;
-  color: white;
-  background: #111;
+.footer-one {
+  align-self: center;
 }
 
-#site-footer {
-  color: white;
-  padding: 60px 0;
-  background: #111;
+.footer-two {
+  align-self: center;
 }
 
-#site-main {
-  margin-bottom: 60px;
+.player-one-title {
+  color: rgb(196, 207, 31);
 }
 
-.container {
-  margin: 0 20px;
+.player-two-title {
+  color: rgb(5, 207, 157);
 }
-
-.section {
-  margin-bottom: 20px;
-  padding-top: 20px;
-} */
 
 @media (min-width: 768px) {
   .container {
@@ -131,10 +138,10 @@ p {
 }
 
 .button {
-  width: 35%;
-  background-color: rgb(61, 177, 245);
+  width: 25%;
+  background-color: rgb(142, 216, 176);
   color: rgb(15, 79, 116);
-  border: 1px solid rgb(159, 188, 206);
+  border: 1px solid rgb(62, 71, 68);
   border-radius: 5px;
   font-size: 18px;
   padding: 5px;

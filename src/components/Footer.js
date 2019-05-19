@@ -1,15 +1,29 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-class Footer extends Component {
-  render() {
-    console.log(this.props.vehiclePlayerOne.cargo_capacity)
+const Footer = (props) => {
+
+    const {playerOne, playerTwo, cargoPlayerOne, cargoPlayerTwo, speedPlayerOne, speedPlayerTwo} = props;
+
     return (
       <div className = 'footer'>
-        <button className = 'button'>Play</button>
-        <button className = 'button'>Change Players</button>
+        <Link className= 'footer-one button' 
+              to = {{
+              pathname: '/winner',
+              playerOne,
+              playerTwo,
+              cargoPlayerOne,
+              cargoPlayerTwo,
+              speedPlayerOne,
+              speedPlayerTwo,
+              }}>
+              Play
+        </Link>
+
+        <button className = 'footer-two button' onClick={() => props.players()}>Change Players</button>
       </div>
     );
-  }
+
 }
 
 export default Footer;

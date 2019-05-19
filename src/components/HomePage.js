@@ -17,7 +17,7 @@ class HomePage extends Component {
     vehiclePlayerOne: '',
     vehiclePlayerTwo: '',
     status: 'loading',
-    isButton: true
+    isButton: true,
   }
 
   randomPlayers = () => {
@@ -90,7 +90,8 @@ class HomePage extends Component {
   }
 
   render() {
-    const { playerOne, playerTwo, vehiclePlayerOne, vehiclePlayerTwo, status, isButton } = this.state;
+    const { playerOne, playerTwo, vehiclePlayerOne, vehiclePlayerTwo, 
+            status, isButton } = this.state;
 
     switch (status) {
 
@@ -104,40 +105,47 @@ class HomePage extends Component {
       default:
         return (
           <div>
-            {isButton ? <section id = 'first-screen-button'>
-                          <h4>BLING WARS</h4>
-                          <button className = 'button'
-                                  onClick={() => this.randomPlayers()}>
-                            LET'S START
-                          </button> 
-                        </section> :
+            {isButton ?   <section id = 'first-screen-button'>
+                            <h1 className = 'home-page-title'>BLING WARS</h1>
+                            <button className = 'button'
+                                    onClick={() => this.randomPlayers()}>
+                                    LET'S START
+                            </button> 
+                          </section>
 
-                        <section id = "game-screen">
+                          :
 
-                          <div className = 'player-one'>
-                            <h2>Player One:</h2>
-                            <h4>{playerOne.name}</h4>
-                            <br/>
-                            <img className = "ship-image" src={shipImage} alt="shipImage" />
-                            <h4>{vehiclePlayerOne.name}</h4>
-                          </div>
+                          <section id = "game-screen">
 
-                          <GameTarget />
-                      
-                          <div className = 'player-two'>
-                            <h2>Player Two:</h2>
-                            <h4>{playerTwo.name}</h4>
-                            <br/>
-                            <img className = "ship-image" src={shipImage} alt="shipImage" />
-                            <h4>{vehiclePlayerTwo.name}</h4>
-                          </div>
+                            <div className = 'player-one'>
+                              <h2 className = 'player-one-title'>Player One</h2>
+                              <h4>{playerOne.name}</h4>
+                              <br/>
+                              <img className = "ship-image" src={shipImage} alt="shipImage" />
+                              <h4>{vehiclePlayerOne.name}</h4>
+                            </div>
 
-                          <Footer vehiclePlayerOne={vehiclePlayerOne}
-                                  vehiclePlayerTwo={vehiclePlayerTwo}
-                                  />
+                            <GameTarget />
+                                    
+                            <div className = 'player-two'>
+                              <h2 className = 'player-two-title'>Player Two</h2>
+                              <h4>{playerTwo.name}</h4>
+                              <br/>
+                              <img className = "ship-image" src={shipImage} alt="shipImage" />
+                              <h4>{vehiclePlayerTwo.name}</h4>
+                            </div>
 
-                        </section>
-                        }
+                            <Footer players = {this.randomPlayers}
+                                    playerOne = {playerOne.name}
+                                    playerTwo = {playerTwo.name}
+                                    cargoPlayerOne = {vehiclePlayerOne.cargo_capacity}
+                                    cargoPlayerTwo = {vehiclePlayerTwo.cargo_capacity}
+                                    speedPlayerOne = {vehiclePlayerOne.max_atmosphering_speed}
+                                    speedPlayerTwo = {vehiclePlayerTwo.max_atmosphering_speed}
+                                    />
+
+                          </section>
+            }         
           </div>
         )
     }
