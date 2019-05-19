@@ -12,6 +12,7 @@ export const withContext = (Comp) => {
                             totalCargo={value.totalCargo}
                             randomDistance={value.randomDistance}
                             randomCargo={value.randomCargo}
+                            resetStateCargoAndDistance={value.resetState}
                             {...this.props}
                       />)
                     )}
@@ -48,6 +49,13 @@ class GameProvider extends Component {
     })
   }
 
+  resetState = () => {
+    this.setState({
+      distance: 0,
+      totalCargo: 0,
+    })
+  }
+
   render() {
     const{distance, totalCargo} = this.state;
     return (
@@ -56,6 +64,7 @@ class GameProvider extends Component {
                  totalCargo: totalCargo,
                  randomDistance: this.randomDistance,
                  randomCargo: this.randomCargo,
+                 resetState: this.resetState,
         }}
         >
         {this.props.children}

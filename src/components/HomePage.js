@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import { withContext } from '../services/GameProvider';
+
 import GameTarget from './GameTarget';
 import Footer from './Footer';
 
@@ -93,6 +95,8 @@ class HomePage extends Component {
     const { playerOne, playerTwo, vehiclePlayerOne, vehiclePlayerTwo, 
             status, isButton } = this.state;
 
+    const { resetStateCargoAndDistance } = this.props;
+
     switch (status) {
 
       case 'loading':
@@ -107,9 +111,11 @@ class HomePage extends Component {
           <div>
             {isButton ?   <section id = 'first-screen-button'>
                             <h1 className = 'home-page-title'>BLING WARS</h1>
-                            <button className = 'button'
-                                    onClick={() => this.randomPlayers()}>
-                                    LET'S START
+                            <button className = 'button home-page-button'
+                                    onClick={() => {this.randomPlayers();
+                                                //reiniciamos la carga a transportar y la distancia
+                                                  resetStateCargoAndDistance()}}>
+                                    START
                             </button> 
                           </section>
 
@@ -152,4 +158,4 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage;
+export default withContext(HomePage);

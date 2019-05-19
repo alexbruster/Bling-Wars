@@ -60,7 +60,6 @@ p {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
   grid-template-areas:
-    "header header header" 
     "left center right"
     "  .  footer footer"
 }
@@ -90,21 +89,30 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 15px;
 }
 
 .footer {
   grid-area: footer;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  width: 80%
 }
 
 .footer-one {
+  grid-area: center;
+  width: 30%;
   align-self: center;
+  display: flex;
+  justify-content: center;
 }
 
 .footer-two {
+  grid-area: right;
+  width: 40%;
   align-self: center;
+  display: flex;
+  justify-content: center;
 }
 
 .player-one-title {
@@ -113,6 +121,56 @@ p {
 
 .player-two-title {
   color: rgb(5, 207, 157);
+}
+
+.winner-screen {
+  height: 100vh;;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "header header"
+    "left right"
+    "footer footer";
+  color: rgb(255, 247, 247);
+}
+
+.winner-screen-playerOne {
+  grid-area: left;
+  justify-self: center;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.winner-screen-playerTwo {
+  grid-area: right;
+  justify-self: center;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.winner-screen-header {
+  grid-area: header;
+  align-self: center;
+  display: flex;
+  justify-content: space-around;
+  justify-self: center;
+}
+
+.winner-screen-footer {
+  grid-area: footer;
+  align-self: center;
+  justify-self: center
+}
+
+.winner-letter {
+  font-size: 1.5em;
+  font-family: 'Bungee Outline', cursive;
+  color: rgb(227, 230, 202);
 }
 
 @media (min-width: 768px) {
@@ -138,13 +196,23 @@ p {
 }
 
 .button {
-  width: 25%;
+  /* width: 25%; */
   background-color: rgb(142, 216, 176);
   color: rgb(15, 79, 116);
   border: 1px solid rgb(62, 71, 68);
   border-radius: 5px;
   font-size: 18px;
   padding: 5px;
+  text-decoration: none;
+}
+
+.home-page-button {
+  width: 25%;
+  font-weight: bold;
+}
+
+.target-button {
+  width: 70%;
 }
 
 img {
