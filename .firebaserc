@@ -1,6 +1,5 @@
 {
   "projects": {
-    "default": "blingwars-8b8c6",
     "blingwars": "blingwars-8b8c6"
   }
 }
